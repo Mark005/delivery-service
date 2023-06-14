@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = 'com.bmo.common'
+archivesBaseName = 'delivery-service-kafka-model'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = this.group
+            artifactId = this.archivesBaseName
+            version = this.version
+
+            from components.java
+        }
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'jakarta.validation:jakarta.validation-api:2.0.2'
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor "org.projectlombok:lombok:1.18.26"
+}
+
+test {
+    useJUnitPlatform()
+}
