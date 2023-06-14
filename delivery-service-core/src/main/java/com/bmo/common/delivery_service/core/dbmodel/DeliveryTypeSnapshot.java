@@ -8,16 +8,16 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-public class DeliveryDetailsSnapshot {
+public class DeliveryTypeSnapshot {
 
-  private UUID orderId;
+  private UUID id;
 
-  private DeliveryTypeSnapshot deliveryType;
+  private ShippingMethod shippingMethod;
 
-  private DeliveryStatus status;
+  private String name;
 
-  private DeliveryAddress deliveryAddress;
+  private String description;
 
-  private ContactPhone contactPhone;
+  private Boolean isAvailable;
 
 }

@@ -8,12 +8,7 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-public class DeliveryCreateDto {
+public class DeliveryTypePatchDto {
 
   private UUID deliveryTypeId;
-
-  private DeliveryAddressDto deliveryAddress;
-
-  private ContactPhoneDto contactPhone;
-
 }

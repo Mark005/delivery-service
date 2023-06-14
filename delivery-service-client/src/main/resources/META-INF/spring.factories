@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.bmo.common.auth_service.client.AuthServiceAutoconfiguration
+com.bmo.common.delivery_service.client.DeliveryServiceClientAutoconfiguration

@@ -1,27 +1,27 @@
 package com.bmo.common.delivery_service.core.mapper;
 
 import com.bmo.common.delivery_service.core.configs.MapStructCommonConfig;
-import com.bmo.common.delivery_service.core.dbmodel.Delivery;
 import com.bmo.common.delivery_service.core.dbmodel.DeliveryType;
-import com.bmo.common.delivery_service.model.rest.DeliveryCreateDto;
-import com.bmo.common.delivery_service.model.rest.DeliveryResponseDto;
-import java.util.UUID;
-import org.mapstruct.BeanMapping;
+import com.bmo.common.delivery_service.core.dbmodel.DeliveryTypeSnapshot;
+import com.bmo.common.delivery_service.model.rest.DeliveryTypeCreateDto;
+import com.bmo.common.delivery_service.model.rest.DeliveryTypeResponseDto;
+import com.bmo.common.delivery_service.model.rest.DeliveryTypeUpdateDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.MappingTarget;
 
 @Mapper(config = MapStructCommonConfig.class)
-public interface DeliveryMapper {
+public interface DeliveryTypeMapper {
 
-  DeliveryResponseDto mapToResponseDto(Delivery delivery);
+  DeliveryTypeResponseDto mapToResponseDto(DeliveryType deliveryType);
 
   @Mapping(target = "id", ignore = true)
-  @Mapping(target = "status", ignore = true)
-  @Mapping(target = "deliveryHistory", ignore = true)
-  @Mapping(target = "deliveryType", source = "createDto.deliveryTypeId")
-  Delivery mapFromCreateDto(UUID orderId, UUID userId, DeliveryCreateDto createDto);
+  @Mapping(target = "deliveries", ignore = true)
+  DeliveryType mapToEntity(DeliveryTypeCreateDto createDto);
 
-  @BeanMapping(unmappedTargetPolicy = ReportingPolicy.IGNORE)
-  DeliveryType map(UUID id);
+  @Mapping(target = "id", ignore = true)
+  @Mapping(target = "deliveries", ignore = true)
+  DeliveryType merge(@MappingTarget DeliveryType deliveryTypeFromDb, DeliveryTypeUpdateDto updateDto);
+
+  DeliveryTypeSnapshot mapToSnapshot(DeliveryType deliveryType);
 }

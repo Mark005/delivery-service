@@ -1,4 +1,4 @@
-package com.example.deliveryservice;
+package com.bmo.common.delivery_service.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

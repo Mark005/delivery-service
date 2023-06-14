@@ -1,5 +1,6 @@
 package com.bmo.common.delivery_service.core.dbmodel;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +10,8 @@ import lombok.Data;
 @Builder
 @AllArgsConstructor
 public class DeliverySnapshot {
+
+  private OffsetDateTime updateDateTime;
 
   private UUID orderId;
 

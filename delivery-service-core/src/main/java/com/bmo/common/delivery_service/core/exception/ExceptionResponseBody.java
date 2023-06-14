@@ -1,4 +1,4 @@
-package com.bmo.common.market_service.core.exception;
+package com.bmo.common.delivery_service.core.exception;
 
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;

@@ -1,7 +1,8 @@
-package com.bmo.common.market_service.core.exception;
+package com.bmo.common.delivery_service.core.exception;
 
-import com.bmo.common.market_service.model.exception.EntityNotFoundException;
-import com.bmo.common.market_service.model.exception.MarketServiceBusinessException;
+
+import com.bmo.common.delivery_service.model.rest.exception.DeliveryServiceBusinessException;
+import com.bmo.common.delivery_service.model.rest.exception.EntityNotFoundException;
 import java.time.LocalDateTime;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -14,8 +15,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class CommonExceptionHandler {
 
-  @ExceptionHandler(MarketServiceBusinessException.class)
-  public ResponseEntity<ExceptionResponseBody> handleBadCredentialsException(MarketServiceBusinessException e) {
+  @ExceptionHandler(DeliveryServiceBusinessException.class)
+  public ResponseEntity<ExceptionResponseBody> handleBadCredentialsException(DeliveryServiceBusinessException e) {
     log.warn(e.getMessage(), e);
     return ResponseEntity
         .status(HttpStatus.BAD_REQUEST)

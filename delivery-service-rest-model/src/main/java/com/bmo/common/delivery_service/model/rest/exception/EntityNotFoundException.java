@@ -1,4 +1,4 @@
-package com.bmo.common.market_service.model.exception;
+package com.bmo.common.delivery_service.model.rest.exception;
 
 public class EntityNotFoundException extends RuntimeException {
 

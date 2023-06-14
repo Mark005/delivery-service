@@ -1,6 +1,7 @@
-package com.bmo.common.market_service.core.mapper;
+package com.bmo.common.delivery_service.core.mapper;
 
-import com.bmo.common.market_service.model.PageRequestDto;
+
+import com.bmo.common.delivery_service.model.rest.PageRequestDto;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 

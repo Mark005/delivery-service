@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-public class DeliveryTypeDto {
+public class DeliveryTypeResponseDto {
 
   private UUID id;
 

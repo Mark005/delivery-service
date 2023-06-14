@@ -1,4 +1,4 @@
-package com.bmo.common.market_service.core.configs;
+package com.bmo.common.delivery_service.core.configs;
 
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.MapperConfig;

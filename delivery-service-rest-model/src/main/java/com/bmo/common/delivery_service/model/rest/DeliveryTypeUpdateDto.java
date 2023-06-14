@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-public class DeliveryTypeCreateDto {
+public class DeliveryTypeUpdateDto {
 
   private ShippingMethodDto shippingMethod;
 

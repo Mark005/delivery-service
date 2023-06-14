@@ -1,6 +1,5 @@
 package com.bmo.common.delivery_service.model.rest;
 
-import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,9 +7,7 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-public class DeliveryTypeResponseDto {
-
-  private UUID id;
+public class DeliveryTypeCreateDto {
 
   private ShippingMethodDto shippingMethod;
 
@@ -19,4 +16,5 @@ public class DeliveryTypeResponseDto {
   private String description;
 
   private Boolean isAvailable;
+
 }

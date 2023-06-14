@@ -1,4 +1,4 @@
-package com.bmo.common.market_service.model;
+package com.bmo.common.delivery_service.model.rest;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

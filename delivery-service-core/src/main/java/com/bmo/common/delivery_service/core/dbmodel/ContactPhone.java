@@ -7,19 +7,9 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-public class DeliveryAddress {
+public class ContactPhone {
 
-  private String country;
+  private String phoneNumber;
 
-  private String city;
-
-  private String street;
-
-  private String building;
-
-  private String apartment;
-
-  private String postalCode;
-
-  private String comment;
+  private PhoneType type;
 }

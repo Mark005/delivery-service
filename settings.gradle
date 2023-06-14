@@ -1,1 +1,6 @@
 rootProject.name = 'delivery-service'
+include 'delivery-service-client'
+include 'delivery-service-rest-model'
+include 'delivery-service-kafka-model'
+include 'delivery-service-core'
+

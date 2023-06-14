@@ -1,8 +1,8 @@
-package com.bmo.common.market_service.model.exception;
+package com.bmo.common.delivery_service.model.rest.exception;
 
-public class MarketServiceBusinessException extends RuntimeException {
+public class DeliveryServiceBusinessException extends RuntimeException {
 
-  public MarketServiceBusinessException(String message) {
+  public DeliveryServiceBusinessException(String message) {
     super(message);
   }
 }
