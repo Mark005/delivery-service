@@ -11,10 +11,12 @@ import com.bmo.common.delivery_service.core.dbmodel.ShippingMethod;
 import com.bmo.common.delivery_service.core.mapper.ContactPhoneMapper;
 import com.bmo.common.delivery_service.core.mapper.DeliveryAddressMapper;
 import com.bmo.common.delivery_service.core.mapper.DeliveryMapper;
+import com.bmo.common.delivery_service.core.mapper.DeliveryStatusUpdateEventMapper;
 import com.bmo.common.delivery_service.core.mapper.DeliveryTypeMapper;
 import com.bmo.common.delivery_service.core.mapper.EnumMapper;
 import com.bmo.common.delivery_service.core.repository.DeliveryRepository;
 import com.bmo.common.delivery_service.core.repository.DeliveryTypeRepository;
+import com.bmo.common.delivery_service.model.kafka.DeliveryStatusUpdateEvent;
 import com.bmo.common.delivery_service.model.rest.ContactPhoneDto;
 import com.bmo.common.delivery_service.model.rest.DeliveryAddressDto;
 import com.bmo.common.delivery_service.model.rest.DeliveryCreateDto;
@@ -35,12 +37,15 @@ public class DeliveryServiceImpl implements DeliveryService {
 
   private final DeliveryRepository deliveryRepository;
   private final DeliveryTypeRepository deliveryTypeRepository;
+  private final DeliveryStatusUpdatePublisher deliveryStatusUpdatePublisher;
 
   private final DeliveryMapper deliveryMapper;
   private final DeliveryTypeMapper deliveryTypeMapper;
   private final DeliveryAddressMapper deliveryAddressMapper;
   private final ContactPhoneMapper contactPhoneMapper;
   private final EnumMapper enumMapper;
+
+  private final DeliveryStatusUpdateEventMapper updateEventMapper;
 
   private final Set<DeliveryStatus> UPDATE_DELIVERY_ADDRESS_ALLOWED_STATUSES =
       Set.of(DeliveryStatus.PAYMENT_PENDING,
@@ -73,7 +78,11 @@ public class DeliveryServiceImpl implements DeliveryService {
     newDelivery.setStatus(DeliveryStatus.PAYMENT_PENDING);
 
     addConditionAfterChange(newDelivery);
-    return deliveryRepository.save(newDelivery);
+
+    Delivery saved = deliveryRepository.save(newDelivery);
+    DeliveryStatusUpdateEvent updateEvent = updateEventMapper.mapToEvent(newDelivery);
+    deliveryStatusUpdatePublisher.publish(updateEvent);
+    return saved;
   }
 
   @Override
@@ -87,7 +96,12 @@ public class DeliveryServiceImpl implements DeliveryService {
 
     delivery.setStatus(newStatus);
     addConditionAfterChange(delivery);
-    return deliveryRepository.save(delivery);
+
+    Delivery saved = deliveryRepository.save(delivery);
+
+    DeliveryStatusUpdateEvent updateEvent = updateEventMapper.mapToEvent(saved);
+    deliveryStatusUpdatePublisher.publish(updateEvent);
+    return saved;
   }
 
   @Override

@@ -45,6 +45,8 @@ dependencies {
     implementation 'org.postgresql:postgresql'
     implementation 'org.liquibase:liquibase-core'
 
+    implementation 'org.springframework.kafka:spring-kafka'
+
     implementation 'commons-codec:commons-codec:1.13'
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
