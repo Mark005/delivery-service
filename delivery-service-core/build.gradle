@@ -37,7 +37,7 @@ repositories {
 dependencies {
     implementation project(':delivery-service-rest-model')
     implementation project(':delivery-service-kafka-model')
-    implementation 'com.bmo.common:gateway-headers:1.0-SNAPSHOT'
+    implementation 'com.bmo.common:gateway-headers:0.1.0-SNAPSHOT'
 
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
