@@ -39,6 +39,14 @@ dependencyManagement {
     }
 }
 
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
 test {
     useJUnitPlatform()
 }
