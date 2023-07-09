@@ -23,7 +23,7 @@ feign:
   client:
     config:
       auth-service:
-        url: http://localhost:8081
+        url: ${AUTH_SERVICE_URL:http://localhost:8081}
 
 kafka:
   producer:
